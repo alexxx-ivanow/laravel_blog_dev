@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 /*Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
 Route::get('/', function () {
     $res = 2 + 3;
@@ -35,12 +35,6 @@ Route::match(['post', 'get', 'put'], 'contact', function () {
     return view('contact');
 })->name('contact');
 
-//Route::redirect('test', 'about', 301);
-
-/*Route::get('post/{id}', function ($id) {
-    return "Post $id";
-});*/
-
 Route::get('post/{id}/{slug?}', function ($id, $slug = '') {
     return "Post $id"." Slag $slug";
 })->name('post');
@@ -56,10 +50,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('post/{id}/edit', function ($id) {
         return "Post Edit id = {$id}";
     })->name('post');
-});
+});*/
+
+Route::get('/', 'HomeController@index');
+Route::get('test', 'HomeController@test');
+Route::get('test2', 'Test\TestController@index');
+Route::get('page/{slug}', 'PageController@show');
 
 Route::fallback(function () {
     //return redirect()->route('home');
     abort(404, 'Sorry, page not found');
 
 });
+

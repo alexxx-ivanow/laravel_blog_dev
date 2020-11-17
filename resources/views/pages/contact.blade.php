@@ -8,8 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello, {{$name}}!</h1>
-    <p>Вам {{$res}} лет</p>
+<h1>Contact page</h1>
 </body>
 </html>
-
