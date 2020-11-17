@@ -56,6 +56,9 @@ Route::get('/', 'HomeController@index');
 Route::get('test', 'HomeController@test');
 Route::get('test2', 'Test\TestController@index');
 Route::get('page/{slug}', 'PageController@show');
+Route::resource('posts', 'PostController', ['parameters' => [
+    'posts' => 'id'
+]]);
 
 Route::fallback(function () {
     //return redirect()->route('home');
