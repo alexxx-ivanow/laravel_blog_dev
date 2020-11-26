@@ -9,35 +9,23 @@
 namespace App\Http\Controllers;
 
 
+use App\Post;
 use Illuminate\Support\Facades\DB;
+use function Psy\debug;
 
 class HomeController extends Controller {
 
     public function index() {
-        /*$query = DB::insert("INSERT INTO posts (title, text) VALUES (?, ?)", ['Статья 5', 'Text 5']);
-        var_dump($query);*/
 
-        /*DB::update("UPDATE posts SET created_at = ?, updated_at = ? WHERE created_at IS NULL OR updated_at IS NULL", [now(), now()]);*/
-
-        DB::beginTransaction();
-        try {
-            DB::update("UPDATE posts SET created_at = ? WHERE created_at IS NULL", [now()]);
-            DB::update("UPDATE posts SET updated_at = ? WHERE updated_at IS NULL", [now()]);
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            echo $e->getMessage();
-        }
-
-        DB::delete("DELETE FROM posts WHERE id = ?", [4]);
-
-        $posts = DB::select("SELECT *FROM posts WHERE id > :id", ['id' => 2]);
-        return $posts;
+        $post = new Post();
+        $post->title = 'Post 2';
+        //$post->content = 'text 2';
+        $post->save();
 
     }
 
     public function test() {
-        return __METHOD__;
+        //return __METHOD__;
     }
 
 }
