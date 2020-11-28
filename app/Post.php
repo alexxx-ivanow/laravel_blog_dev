@@ -18,10 +18,10 @@ class Post extends Model
     protected $keyType = 'string';
     protected $timestamp = false;
     public $timestamps = false;*/
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'rubric_id'];
 
-    /*protected $attributes = [
-        'content' => 'Lorem Ipsum 2'
-    ];*/
+    public function rubric () {
+        return $this->belongsTo('App\Rubric');
+    }
 
 }
