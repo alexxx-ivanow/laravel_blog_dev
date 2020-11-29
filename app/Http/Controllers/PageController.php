@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 class PageController extends Controller {
     public function show() {
-        return view("pages.about");
+        $title = 'About Page';
+        return view("pages.about", compact('title'));
     }
 }

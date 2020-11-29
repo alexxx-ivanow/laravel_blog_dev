@@ -23,8 +23,10 @@ class HomeController extends Controller {
 
     public function index() {
 
-
-        return view('home', []);
+        $title = 'Home page';
+        $name = 'Alexey';
+        $h1 = '<h1>Home Page</h1>';
+        return view('home', compact('title', 'h1', 'name'));
 
     }
 
