@@ -52,17 +52,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('post');
 });*/
 
-Route::get('/', 'HomeController@index');
-Route::get('test', 'HomeController@test');
-Route::get('test2', 'Test\TestController@index');
-Route::get('page/{slug}', 'PageController@show');
-Route::resource('posts', 'PostController', ['parameters' => [
-    'posts' => 'id'
-]]);
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::fallback(function () {
-    //return redirect()->route('home');
-    abort(404, 'Sorry, page not found');
+Route::get('page/about', 'PageController@show')->name('page.about');
 
-});
+
+
 
