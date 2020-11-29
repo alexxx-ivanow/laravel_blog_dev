@@ -13,6 +13,7 @@ use App\City;
 use App\Country;
 use App\Post;
 use App\Rubric;
+use App\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use function Psy\debug;
@@ -27,10 +28,25 @@ class HomeController extends Controller {
 
        /* $post = Post::find(2);
         dd($post->rubric->title);*/
-       $rubric = Rubric::find(4);
-       dump($rubric->posts);
-        $rubric = Post::find(2)->rubric;
-        dd($rubric);
+       //$rubric = Rubric::find(1)->posts()->select('title')->where('id', '>', 2)->get();
+
+        /*$posts = Post::with('rubric')->where('id', '>', 1)->get();
+
+        foreach ($posts as $post) {
+            dump($post->title, $post->rubric->title);
+        }*/
+
+    //Tag::query()->insert(['title' => 'Tag 4']);
+
+        $post = Post::find(2);
+        dump($post->title);
+
+        foreach ($post->tags as $tag) {
+            dump($tag->title);
+        }
+
+
+        //dump($posts);
 
     }
 
