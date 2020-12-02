@@ -15,6 +15,7 @@ use App\Post;
 use App\Rubric;
 use App\Tag;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function Psy\debug;
 
@@ -30,8 +31,25 @@ class HomeController extends Controller {
 
     }
 
-    public function test() {
-        //return __METHOD__;
+    public function create() {
+        $title = 'create';
+        $rubrics = Rubric::pluck('title', 'id')->all();
+        //dd($rubrics);
+        return view('create', compact('title','rubrics'));
+
+    }
+
+
+    public function store(Request $request) {
+        /*dump($request->input('title'));
+        dump($request->input('content'));
+        dump($request->input('rubric_id'));*/
+
+        dump($request->all());
+
+        Post::create($request->all());
+
+        return redirect()->route('home');
     }
 
 }

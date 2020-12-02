@@ -28,14 +28,8 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    /*public function getPostDate () {
-        return Carbon::parse($this->created_at)->diffForHumans();
-    }*/
-
     public function getPostDate () {
-        $formatter = new \IntlDateFormatter('ru_RU', \IntlDateFormatter::FULL, \IntlDateFormatter::FULL);
-        $formatter->setPattern('d MMM y');
-        return $formatter->format(new \DateTime($this->created_at));
+        return Carbon::parse($this->created_at)->diffForHumans();
     }
 
 }
