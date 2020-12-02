@@ -46,7 +46,7 @@
 </header>
 
 <main role="main">
-    {!! mb_strtoupper($h1) !!}
+    {{--!! mb_strtoupper($h1) !!--}}
 
     {{-- $title --}}
 
