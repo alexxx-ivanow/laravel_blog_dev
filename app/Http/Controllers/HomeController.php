@@ -47,21 +47,6 @@ class HomeController extends Controller {
             'rubric_id' => 'required|integer'
         ]);
 
-        /*$rules = [
-            'title' => 'required|min:5|max:100',
-            'content' => 'required',
-            'rubric_id' => 'integer'
-        ];
-
-        $messages = [
-            'title.required' => 'Заполните поле названия',
-            'title.min' => 'Миниму 5 символов в названии',
-            'content.required' => 'Поле контента не может быть пустым',
-            'rubric_id.integer' => 'Выберите рубрику статьи'
-        ];
-
-        Validator::make($request->all(), $rules, $messages)->validate();*/
-
         Post::create($request->all());
 
         return redirect()->route('home');
