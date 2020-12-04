@@ -21,7 +21,27 @@ use \Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller {
 
-    public function index() {
+    public function index(Request $request) {
+
+        /*$request->session()->put('test', 'value_test');
+        session(['cart' => [
+                ['id' => 1,
+                'title' => 'Good 1'],
+                ['id' => 2,
+                'title' => 'Good 2']
+            ]
+        ]);*/
+        //$request->session()->remove('test');
+        //$request->session()->flush();
+
+        //$request->session()->push('cart', ['id' => 3, 'title' => 'Good 3']);
+
+        //dump($request->session()->pull('test'));
+
+        //dump(session('cart.0.title'));
+        //dump($request->session()->get('cart.0.title'));
+
+        dump(session()->all());
 
         $title = 'Home Page';
         $posts = Post::orderBy('id', 'desc')->get();
@@ -48,6 +68,8 @@ class HomeController extends Controller {
         ]);
 
         Post::create($request->all());
+
+        $request->session()->flash('success', 'Данные успешно сохранены');
 
         return redirect()->route('home');
     }
