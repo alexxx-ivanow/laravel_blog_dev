@@ -11,15 +11,16 @@
 
 @section('content')
     <div class="container">
+
         <form class="mt-5" method="post" action="{{ route('posts.store') }}">
             @csrf
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                <input type="text" class="form-control" id="title" name="title" placeholder="title" value="{{ old('title') }}">
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea class="form-control" id="content" rows="5" name="content"></textarea>
+                <textarea class="form-control" id="content" rows="5" name="content">{{ old('content') }}</textarea>
             </div>
             <div class="form-group">
                 <label for="rubric_id">Example multiple select</label>
@@ -28,7 +29,7 @@
                     <option>Select Rubric</option>
                     @foreach($rubrics as $key => $rubric)
 
-                    <option value="{{ $key }}">{{ $rubric }}</option>
+                    <option value="{{ $key }}" @if(old('rubric_id') == $key)selected @endif>{{ $rubric }}</option>
                     @endforeach
                 </select>
             </div>

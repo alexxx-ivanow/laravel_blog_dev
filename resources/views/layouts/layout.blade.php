@@ -47,9 +47,9 @@
 </header>
 
 <main role="main">
-    {{--!! mb_strtoupper($h1) !!--}}
-
-    {{-- $title --}}
+    <div class="container">
+        @include('layouts.errors')
+    </div>
 
     @yield('content')
 

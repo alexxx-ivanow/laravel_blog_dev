@@ -16,8 +16,7 @@ use App\Rubric;
 use App\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use function Psy\debug;
+use \Illuminate\Support\Facades\Validator;
 
 
 class HomeController extends Controller {
@@ -41,11 +40,27 @@ class HomeController extends Controller {
 
 
     public function store(Request $request) {
-        /*dump($request->input('title'));
-        dump($request->input('content'));
-        dump($request->input('rubric_id'));*/
 
-        dump($request->all());
+        $this->validate($request, [
+            'title' => 'required|min:5|max:100',
+            'content' => 'required',
+            'rubric_id' => 'required|integer'
+        ]);
+
+        /*$rules = [
+            'title' => 'required|min:5|max:100',
+            'content' => 'required',
+            'rubric_id' => 'integer'
+        ];
+
+        $messages = [
+            'title.required' => 'Заполните поле названия',
+            'title.min' => 'Миниму 5 символов в названии',
+            'content.required' => 'Поле контента не может быть пустым',
+            'rubric_id.integer' => 'Выберите рубрику статьи'
+        ];
+
+        Validator::make($request->all(), $rules, $messages)->validate();*/
 
         Post::create($request->all());
 
